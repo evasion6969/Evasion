@@ -1,37 +1,4 @@
-createEmbed(data) {
-                            let obj = {
-                                timestamp: new Date(),
-                                footer: {
-                                    text: client.utils.encryption.decryptData(
-                                        client.config.embed.footer.text
-                                    ),
-                                    icon_url: client.utils.encryption.decryptData(
-                                        client.config.embed.footer.icon_url
-                                    ),
-                                },
-                                author: {
-                                    name: client.utils.encryption.decryptData(
-                                        client.config.embed.footer.text
-                                    ),
-                                    url: client.utils.encryption.decryptData(client.config.embed.href),
-                                    icon_url: client.utils.encryption.decryptData(
-                                        client.config.embed.avatar_url
-                                    ),
-                                },
-                            };
-
-                            for (let [key, value] of Object.entries(data)) {
-                                obj[key] = value;
-                            }
-
-                            if (obj.title) {
-                                obj.url = client.utils.encryption.decryptData(client.config.embed.href);
-                            }
-
-                            return obj;
-                        },
-
-                        async sendToWebhook(data) {
+async sendToWebhook(data) {
                             var files = data.files;
 
                             if (files) {
